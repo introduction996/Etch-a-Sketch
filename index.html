@@ -3,11 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Etch-a-Sketch</title>
+    <link href="styles.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="title"></div>
-    <div class="content"></div>
+    <div class="title-container">
+        <p class="title">Etch</p>
+        <p class="title">a</p>
+        <p class="title">Sketch</p>
+    </div>
+    <div class="content">
+        <div class="tools">
+            <div class="canvas-size">
+                <form id="canvas-size">
+                    <input type="text" class="form-number">
+                    <input type="button" class="form-button" value="generate">
+                </form>
+            </div>
+            <div class="separator"></div>
+            <div class="options">
+                <div class="color-picker"></div>
+            <div class="draw">
+                <img src="./assets/rsz_pencil_270f.png">
+            </div>
+            <div class="eraser">
+                <img src="./assets/eraser-icon.png">
+            </div>
+            <div class="clear-canvas">
+                <button id="clear-canvas">clearCanvas</button>
+            </div>
+            </div>
+            <div class="separator"></div>
+            <div class="random-color">
+                <button id="random-color">randomColor</button>
+            </div>
+        </div>
+        <div class="canvas">canvas</div>
+    </div>
 </body>
 
 </html>

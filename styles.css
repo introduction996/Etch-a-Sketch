@@ -1,0 +1,206 @@
+html, body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+}
+
+.title-container, .content {
+    background: rgb(0, 0, 26);
+}
+
+.title-container {
+    flex: 1;
+    font-size: 60px;
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 2;
+    padding: 6px;
+}
+
+p.title {
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.tools {
+    width: auto;
+    height: auto;
+    background-color: rgb(0, 23, 65);
+    border-radius: 6px;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+}
+
+.separator {
+    background-color: rgb(0, 32, 92);
+    margin: 0 8px 0 8px;
+    width: 2px;
+    height: 80%;
+    border-radius: 2px;
+}
+
+.form-number {
+    width: 30px;
+}
+
+.form-button {
+    width: auto;
+    height: 43px;
+
+    background-color: orange;
+    border: 3px solid rgb(196, 127, 0);
+    border-radius: 6px;
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    padding: 3px;
+
+    text-align: center;
+}
+
+.form-button:hover {
+    opacity: 90%;
+    cursor: pointer;
+}
+
+.form-button:active {
+    opacity: 80%;
+}
+
+.form-number {
+    font-size: 18px;
+    border-radius: 6px;
+    height: 30px;
+    width: 50px
+}
+
+.color-picker {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgb(0, 32, 92);
+    border-radius: 6px;
+    background-color: red;
+}
+
+.color-picker:hover {
+    cursor: pointer;
+    opacity: 90%;
+}
+
+.color-picker:active {
+    opacity: 80%;
+}
+
+.eraser {
+    background-color: rgb(0, 41, 117);
+    border: 3px solid rgb(0, 32, 92);
+    border-radius: 6px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eraser:hover {
+    cursor: pointer;
+    opacity: 90%;
+}
+
+.eraser:active {
+    opacity: 80%;
+}
+
+.draw {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0, 41, 117);
+    border: 3px solid rgb(0, 32, 92);
+    border-radius: 6px;
+}
+
+.draw:hover {
+    cursor: pointer;
+    opacity: 90%;
+}
+
+.draw:active {
+    opacity: 80%;
+}
+
+#clear-canvas {
+    width: auto;
+    height: 55.5px;
+    background-color: rgb(0, 41, 117);
+    border: 3px solid rgb(0, 32, 92);
+    border-radius: 6px;
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    padding: 6px;
+}
+
+#clear-canvas:hover {
+    opacity: 90%;
+    cursor: pointer;
+}
+
+#clear-canvas:active {
+    opacity: 80%;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+#random-color {
+    width: auto;
+    height: 55.5px;
+    background-color: rgb(0, 41, 117);
+    border: 3px solid rgb(0, 32, 92);
+    border-radius: 6px;
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    padding: 6px;
+}
+
+#random-color:hover {
+    opacity: 90%;
+    cursor: pointer;
+}
+
+#random-color:active {
+    opacity: 80%;
+}
