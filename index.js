@@ -96,6 +96,7 @@ let mouseDown = false;
 document.body.onmousedown = () => mouseDown = true;
 document.body.onmouseup = () => mouseDown = false;
 function draw(e) {
+    // if the mouse is over the square but isn't pressin - don't draw anything
     if (e.type === 'mouseover' && !mouseDown) {return}
     else {
         const color = document.querySelector('.color-picker');
