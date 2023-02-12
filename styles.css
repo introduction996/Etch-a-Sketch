@@ -31,10 +31,11 @@ body {
 .content {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     flex: 2;
     padding: 6px;
+    gap: 8px;
 }
 
 p.title {
@@ -48,8 +49,19 @@ p.title {
     height: auto;
     background-color: rgb(0, 23, 65);
     border-radius: 6px;
-    padding: 6px;
+    padding: 10px;
     display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tools-options {
+    width: 10px;
+    height: 10px;
+    background-color: rgb(0, 0, 26);
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
@@ -203,4 +215,12 @@ p.title {
 
 #random-color:active {
     opacity: 80%;
+}
+
+.canvas {
+    border: 5px solid orange;
+    border-radius: 6px;
+    background-color: white;
+    width: 600px;
+    height: 600px;
 }
