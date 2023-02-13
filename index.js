@@ -119,24 +119,35 @@ function draw(e) {
 }
 
 function generateCanvas(size) {
-    const previousDivs = document.querySelectorAll('.canvas-div');
-    previousDivs.forEach((div) => {
-        const canvas = document.querySelector('.canvas');
-        canvas.removeChild(div);
-    });
-    for (let i = 1; i<=size*size; i++) {
-        const div = document.createElement('div');
-        div.classList.add('canvas-div');
-        const canvas = document.querySelector('.canvas');
-        const sizeOfOneDiv = (canvas.offsetWidth - 9) / size; // i have to subtract the additional margin, border and padding off the element with this method
-        div.style.width = `${sizeOfOneDiv}px`;
-        div.style.height = `${sizeOfOneDiv}px`;
-        div.style.boxSizing = 'border-box';
-        div.style.userSelect = 'none';
-        div.style.flexGrow = '1';
-        div.setAttribute('draggable', false);
-        div.addEventListener('mouseover', (e) => {draw(e)});
-        div.addEventListener('mousedown', (e) => {draw(e)}); // to be able to one-dot draw
-        canvas.appendChild(div);
+    const error = document.querySelector('#size-error');
+    error.textContent = '';
+    if (parseInt(size) > 50) {
+        error.textContent = 'Only supports sizes up to 50x50 px!';
+    } else if (isNaN(parseInt(size)) === true) {
+        error.textContent = 'Enter a valid size number!';
+    } else {
+        // clear the previous canvas
+        const previousDivs = document.querySelectorAll('.canvas-div');
+        previousDivs.forEach((div) => {
+            const canvas = document.querySelector('.canvas');
+            canvas.removeChild(div);
+        });
+
+        // generate new canvas
+        for (let i = 1; i<=size*size; i++) {
+            const div = document.createElement('div');
+            div.classList.add('canvas-div');
+            const canvas = document.querySelector('.canvas');
+            const sizeOfOneDiv = (canvas.offsetWidth - 9) / size; // i have to subtract the additional margin, border and padding off the element with this method
+            div.style.width = `${sizeOfOneDiv}px`;
+            div.style.height = `${sizeOfOneDiv}px`;
+            div.style.boxSizing = 'border-box';
+            div.style.userSelect = 'none';
+            div.style.flexGrow = '1';
+            div.setAttribute('draggable', false);
+            div.addEventListener('mouseover', (e) => {draw(e)});
+            div.addEventListener('mousedown', (e) => {draw(e)}); // to be able to one-dot draw
+            canvas.appendChild(div);
+        }
     }
 }
