@@ -57,7 +57,7 @@ p.title {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* user-select: none; */
+    user-select: none;
 }
 
 .tools-options {
@@ -244,8 +244,9 @@ p.title {
     border: 5px solid orange;
     border-radius: 6px;
     background-color: white;
-    width: 600px;
-    height: 600px;
+    width: 500px;
+    height: 500px;
     display: flex;
     flex-wrap: wrap;
+    gap: 0;
 }

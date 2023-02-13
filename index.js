@@ -79,6 +79,11 @@ function closeOptionsColor() {
 }
 
 
+const input = document.querySelector('.form-number');
+input.addEventListener('click', (e) => {
+    e.target.select();
+})
+
 let newSize;
 const generateButton = document.querySelector('.form-button');
 generateButton.addEventListener('click', () => {
@@ -86,6 +91,15 @@ generateButton.addEventListener('click', () => {
     newSize = inputField.value;
     generateCanvas(newSize);
 });
+
+window.addEventListener('keydown', (e) => {
+    if (e.code == 'Enter') {
+        const inputField = document.querySelector('.form-number');
+        e.target.blur();
+        newSize = inputField.value;
+        generateCanvas(newSize);
+    }
+})
 
 // default canvas
 const inputField = document.querySelector('.form-number');
@@ -119,6 +133,7 @@ function generateCanvas(size) {
         div.style.height = `${sizeOfOneDiv}px`;
         div.style.boxSizing = 'border-box';
         div.style.userSelect = 'none';
+        div.style.flexGrow = '1';
         div.setAttribute('draggable', false);
         div.addEventListener('mouseover', (e) => {draw(e)});
         div.addEventListener('mousedown', (e) => {draw(e)}); // to be able to one-dot draw
