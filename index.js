@@ -119,11 +119,12 @@ function draw(e) {
 }
 
 function generateCanvas(size) {
+    size = parseInt(size);
     const error = document.querySelector('#size-error');
     error.textContent = '';
-    if (parseInt(size) > 50) {
+    if (size > 50) {
         error.textContent = 'Only supports sizes up to 50x50 px!';
-    } else if (isNaN(parseInt(size)) === true) {
+    } else if (isNaN(size) === true) {
         error.textContent = 'Enter a valid size number!';
     } else {
         // clear the previous canvas
