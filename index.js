@@ -92,6 +92,7 @@ generateButton.addEventListener('click', () => {
     generateCanvas(newSize);
 });
 
+// entering a value and pressing enter works
 window.addEventListener('keydown', (e) => {
     if (e.code == 'Enter') {
         const inputField = document.querySelector('.form-number');
@@ -101,10 +102,36 @@ window.addEventListener('keydown', (e) => {
     }
 })
 
-// default canvas
-const inputField = document.querySelector('.form-number');
-inputField.value = 10;
-generateCanvas(10);
+// change the mode
+let currentMode = 'draw';
+function changeMode(mode) {
+    currentMode = mode;
+}
+//options
+const drawOption = document.querySelector('.draw');
+const eraseOption = document.querySelector('.eraser');
+drawOption.addEventListener('click', () => {
+    changeMode('draw');
+    drawOption.style.border = '3px solid orange';
+    eraseOption.style.border = '';
+});
+
+eraseOption.addEventListener('click', () => {
+    changeMode('eraser');
+    drawOption.style.border = '';
+    eraseOption.style.border = '3px solid orange';
+
+});
+// additional function for checking the mode and deciding the styles
+function checkMode (mode) {
+    if (mode == 'draw') {
+        drawOption.style.border = '3px solid orange';
+        eraseOption.style.border = '';
+    } else if (mode == 'eraser') {
+        drawOption.style.border = '';
+        eraseOption.style.border = '3px solid orange';
+    }
+}
 
 let mouseDown = false;
 document.body.onmousedown = () => mouseDown = true;
@@ -112,13 +139,16 @@ document.body.onmouseup = () => mouseDown = false;
 function draw(e) {
     // if the mouse is over the square but isn't pressin - don't draw anything
     if (e.type === 'mouseover' && !mouseDown) {return}
-    else {
+    else if (currentMode == 'draw') {
         const color = document.querySelector('.color-picker');
         e.target.style.backgroundColor = getComputedStyle(color).backgroundColor // new function i haven't heard of before 👍👍
+    } else if (currentMode == 'eraser') {
+        e.target.style.backgroundColor = '';
     }
 }
 
 function generateCanvas(size) {
+    checkMode(currentMode);
     size = parseInt(size);
     const error = document.querySelector('#size-error');
     error.textContent = '';
@@ -152,3 +182,8 @@ function generateCanvas(size) {
         }
     }
 }
+
+// default canvas
+const inputField = document.querySelector('.form-number');
+inputField.value = 10;
+generateCanvas(10);
