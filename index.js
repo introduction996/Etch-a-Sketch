@@ -187,3 +187,23 @@ function generateCanvas(size) {
 const inputField = document.querySelector('.form-number');
 inputField.value = 10;
 generateCanvas(10);
+
+function clearCanvas() {
+    const canvasDivs = document.querySelectorAll('.canvas-div');
+    canvasDivs.forEach((div) => {
+        div.style.backgroundColor = '';
+    })
+}
+
+const clearCanvasButton = document.querySelector('#clear-canvas');
+clearCanvasButton.addEventListener('click', () => {
+    clearCanvas();
+    // idk i just thought this would look nice for anyone watching the console while playing around in the canvas
+    console.log('%c canvas cleared!', 'font-size: 20px; color: orange;');
+    setTimeout(() => {console.clear()}, 1000);
+});
+
+const colorPicker = document.querySelector('.color-picker');
+colorPicker.addEventListener('click',() => {openOptionsColor()});
+const canvas = document.querySelector('.canvas');
+canvas.addEventListener('mousedown', () => {closeOptionsColor()});
