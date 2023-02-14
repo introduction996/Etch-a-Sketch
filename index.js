@@ -1,4 +1,16 @@
+let toolsOpen = false;
+let border = false;
+let borderRadius = false;
+let width = false;
+let height = false;
+
 function openOptionsColor() {
+    if (toolsOpen && border && borderRadius && width && height) {
+        console.log('%c color options already opened!', 'font-size: 10px; color: red;')
+        return
+    }
+
+
     const toolOptions = document.querySelector('.tools-options');
     const redSelector = document.createElement('div');
     const greenSelector = document.createElement('div');
@@ -20,11 +32,19 @@ function openOptionsColor() {
 
     const defaultColors = [redSelector, greenSelector, orangeSelector, violetSelector, cyanSelector];
     toolOptions.style.backgroundColor = 'rgb(0, 23, 65)';
+    toolsOpen = true;
     defaultColors.forEach((color) => {
         color.style.border = '3px solid rgb(0, 32, 92)';
+        border = true;
+
         color.style.borderRadius = '6px';
+        borderRadius = true;
+
         color.style.width = '30px';
+        width = true;
+
         color.style.height = '30px';
+        height = true;
         toolOptions.appendChild(color);
         color.addEventListener('click', () => {
             const colorIcon = document.querySelector('.color-picker');
@@ -69,11 +89,17 @@ function closeOptionsColor() {
     // haha line 69 funny number (im gonna die alone)
     const defaultColors = [redSelector, greenSelector, orangeSelector, violetSelector, cyanSelector];
     toolOptions.style.backgroundColor = 'rgb(0, 0, 26)';
+    toolsOpen = false;
     defaultColors.forEach((color) => {
         color.style.border = '';
         color.style.borderRadius = '';
         color.style.width = '';
         color.style.height = '';
+
+        border = false;
+        borderRadius = false;
+        width = false;
+        height = false;
         toolOptions.removeChild(color);
     });
 }
