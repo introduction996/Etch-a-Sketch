@@ -66,6 +66,7 @@ function openOptionsColor() {
     cyanSelector.setAttribute('id', 'cyan');
 
     const defaultColors = [redSelector, greenSelector, orangeSelector, violetSelector, cyanSelector];
+    // haha line 69 funny number (im gonna die alone)
     toolOptions.style.backgroundColor = 'rgb(0, 23, 65)';
     toolsOpen = true;
     defaultColors.forEach((color) => {
@@ -131,7 +132,6 @@ function closeOptionsColor() {
     violetSelector.style.backgroundColor = '';
     cyanSelector.style.backgroundColor = '';
 
-    // haha line 69 funny number (im gonna die alone)
     const defaultColors = [redSelector, greenSelector, orangeSelector, violetSelector, cyanSelector];
     toolOptions.style.backgroundColor = 'rgb(0, 0, 26)';
     toolsOpen = false;
