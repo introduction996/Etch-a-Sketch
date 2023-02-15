@@ -4,6 +4,40 @@ let borderRadius = false;
 let width = false;
 let height = false;
 
+const rgbPicker = document.createElement('div');
+rgbPicker.classList.add('rgbPicker');
+
+const separator = document.createElement('div');
+separator.classList.add('separator');
+
+const pTagRGB = document.querySelector('.rgb');
+const toolOptions = document.querySelector('.tools-options');
+toolOptions.removeChild(pTagRGB);
+
+const selectRGB = document.createElement('button');
+// some styles
+selectRGB.classList.add('rgb-select');
+selectRGB.textContent = 'select';
+selectRGB.addEventListener('click', () => {
+    let R = document.querySelector('#R');
+    let G = document.querySelector('#G');
+    let B = document.querySelector('#B');
+
+    if (parseInt(R.value)>256) {
+        R.value = '256';
+    }
+    if (parseInt(G.value)>256) {
+        G.value = '256';
+    }
+    if (parseInt(B.value)>256) {
+        B.value = '256';
+    }
+
+    const colorIcon = document.querySelector('.color-picker');
+    colorIcon.style.backgroundColor = `rgb(${R.value},${G.value},${B.value})`
+});
+
+
 function openOptionsColor() {
     if (toolsOpen && border && borderRadius && width && height) {
         console.log('%c color options already opened!', 'font-size: 10px; color: red;')
@@ -12,6 +46,7 @@ function openOptionsColor() {
 
 
     const toolOptions = document.querySelector('.tools-options');
+    toolOptions.appendChild(pTagRGB);
     const redSelector = document.createElement('div');
     const greenSelector = document.createElement('div');
     const orangeSelector = document.createElement('div');
@@ -45,7 +80,7 @@ function openOptionsColor() {
 
         color.style.height = '30px';
         height = true;
-        toolOptions.appendChild(color);
+        toolOptions.insertBefore(color, pTagRGB);
         color.addEventListener('click', () => {
             const colorIcon = document.querySelector('.color-picker');
 
@@ -69,6 +104,16 @@ function openOptionsColor() {
             }
         });
     });
+
+    toolOptions.insertBefore(separator, pTagRGB);
+    toolOptions.appendChild(selectRGB);
+
+    const R = document.querySelector('#R');
+    const G = document.querySelector('#G');
+    const B = document.querySelector('#B');
+    R.addEventListener('click', () => {R.select()});
+    G.addEventListener('click', () => {G.select()});
+    B.addEventListener('click', () => {B.select()});
 }
 
 
@@ -102,6 +147,10 @@ function closeOptionsColor() {
         height = false;
         toolOptions.removeChild(color);
     });
+
+    toolOptions.removeChild(separator);
+    toolOptions.removeChild(pTagRGB);
+    toolOptions.removeChild(selectRGB);
 }
 
 
