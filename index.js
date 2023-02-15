@@ -133,6 +133,8 @@ let currentMode = 'draw';
 function changeMode(mode) {
     currentMode = mode;
 }
+
+const randomColorButton = document.querySelector('#random-color');
 //options
 const drawOption = document.querySelector('.draw');
 const eraseOption = document.querySelector('.eraser');
@@ -144,9 +146,13 @@ drawOption.addEventListener('click', () => {
 
 eraseOption.addEventListener('click', () => {
     changeMode('eraser');
+    document.querySelector('#random-color').style.border = '';
     drawOption.style.border = '';
     eraseOption.style.border = '3px solid orange';
 
+
+    randomColorButton.style.border = '';
+    randomColorButton.style.backgroundColor = 'rgb(0, 41, 117)';
 });
 // additional function for checking the mode and deciding the styles
 function checkMode (mode) {
@@ -159,19 +165,46 @@ function checkMode (mode) {
     }
 }
 
+let randomColorSelected = false;
 let mouseDown = false;
 document.body.onmousedown = () => mouseDown = true;
 document.body.onmouseup = () => mouseDown = false;
+
+randomColorButton.addEventListener('click', () => {
+    randomColorSelected = !randomColorSelected;
+    if (randomColorSelected) {
+        randomColorButton.style.border = '3px solid orange';
+    } else {
+        randomColorButton.style.border = '';
+        randomColorButton.style.backgroundColor = 'rgb(0, 41, 117)';
+    }
+});
+
 function draw(e) {
     // if the mouse is over the square but isn't pressin - don't draw anything
     if (e.type === 'mouseover' && !mouseDown) {return}
-    else if (currentMode == 'draw') {
+
+    if (currentMode == 'draw' && randomColorSelected) {
+        const colors = ['red', 'green', 'purple', 'blue', 'grey', 'orange'];
+        randomColorButton.style.backgroundColor = colors[generateRandomIndex(colors.length - 1)];
+        e.target.style.backgroundColor = getComputedStyle(randomColorButton).backgroundColor
+    } else if (currentMode == 'draw') {
+        randomColorSelected = false;
+        randomColorButton.style.backgroundColor = 'rgb(0, 41, 117)';
         const color = document.querySelector('.color-picker');
         e.target.style.backgroundColor = getComputedStyle(color).backgroundColor // new function i haven't heard of before 👍👍
-    } else if (currentMode == 'eraser') {
+    }else if (currentMode == 'eraser') {
         e.target.style.backgroundColor = '';
+        randomColorButton.style.backgroundColor = 'rgb(0, 41, 117)';
+        randomColorSelected = false;
     }
 }
+
+function generateRandomIndex(upperLimit) {
+    randomIndex = Math.floor(Math.random() * upperLimit);
+    return randomIndex
+}
+
 
 function generateCanvas(size) {
     checkMode(currentMode);
