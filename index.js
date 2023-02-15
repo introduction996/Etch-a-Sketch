@@ -277,7 +277,7 @@ function generateCanvas(size) {
             const div = document.createElement('div');
             div.classList.add('canvas-div');
             const canvas = document.querySelector('.canvas');
-            const sizeOfOneDiv = (canvas.offsetWidth - 9) / size; // i have to subtract the additional margin, border and padding off the element with this method
+            const sizeOfOneDiv = (canvas.offsetWidth - 10) / size;
             div.style.width = `${sizeOfOneDiv}px`;
             div.style.height = `${sizeOfOneDiv}px`;
             div.style.boxSizing = 'border-box';
