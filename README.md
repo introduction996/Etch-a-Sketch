@@ -1,6 +1,6 @@
 # Etch-a-Sketch
 a web version of something between a sketchpad and an etch-a-sketch
-see the project live [here]()
+## see the project live [here](https://introduction996.github.io/Etch-a-Sketch/)
 
 ### preview:
 ![preview of the project](./assets/etch-a-sketch-preview.jpg)
